@@ -27,7 +27,9 @@ begin
 			reg_2_data <= register_file(to_integer(unsigned(reg_2_select)));
 			
 			if write_en = '1' then
-				register_file(to_integer(unsigned(write_select))) <= write_data;
+				if write_select /= "00000" then
+					register_file(to_integer(unsigned(write_select))) <= write_data;
+				end if;
 			end if ;
 		end if;
 	end process ; -- register_pro
